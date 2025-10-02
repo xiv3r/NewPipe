@@ -1,4 +1,4 @@
-name: update
+name: Fetch File
 
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ jobs:
       run: |
         mkdir -p downloads
         cd downloads
-        wget "https://github.com/TeamNewPipe/NewPipe/releases/download/v0.28.0/NewPipe_v0.28.0.apk"
+        wget "https://github.com/TeamNewPipe/NewPipe/releases/download/v0.27.7/NewPipe_v0.27.7.apk"
         
     - name: Determine release tag
       id: get_tag
@@ -27,7 +27,7 @@ jobs:
         if [ "${{ github.event_name }}" == "release" ]; then
           TAG_NAME="${{ github.event.release.tag_name }}"
         else
-          TAG_NAME="rootfs"
+          TAG_NAME="newpipe"
         fi
         echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
 
